@@ -1,11 +1,43 @@
 var galleryItems = $('.gallery li');
-for (var i = 0; i < galleryItems.length; i+=2) {
-    console.log(galleryItems[i]);
-};
+var viewportWidth = $(window).width();
+var rangeValue = 0;
 
-$('body').mousewheel(function(event, delta) {
-    this.scrollLeft -= (delta * 30);
-    event.preventDefault();
-})
+// $('body').mousewheel(function(event, delta) {
+//     rangeValue = delta * 30;
+//     this.scrollLeft -= (delta * 30);
+//     $('#galleryRange').attr('value', rangeValue);
+//     console.log($('#galleryRange').attr('value'))
+//     event.preventDefault();
+// });
 
-$('#galleryRange').prop('min',)
+// function windowSize(){
+//     $(window).resize(function(){
+//         viewportWidth = $(window).width();
+//         initRange();
+//     });
+// }
+
+function initRange(){
+    $('#galleryRange').attr({
+        min: 0,
+        max: viewportWidth,
+        value: 0,
+    });
+
+    $('#galleryRange').change('input', function () {
+        console.log('hi')
+    });
+
+    $('#galleryRange').on('input', function () {
+        $(this).trigger('change');
+    });
+
+// .input(function(event, delta) {
+//         $(this).attr('min', 0) 
+//         $(this).trigger('change');
+//     });
+    console.log( $('#galleryRange'))
+}
+
+initRange();
+windowSize();
